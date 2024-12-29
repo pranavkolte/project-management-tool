@@ -12,7 +12,13 @@ class ProjectAPIView(APIView):
     def get(self, request):
         projects = Projects.objects.all()
         serializer = ProjectSerializer(projects, many=True)
-        return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(
+            data={
+                "message": "Projects Found",
+                "data": serializer.data,
+            },
+            status=status.HTTP_200_OK,
+        )
 
     def post(self, request):
         owner = request.data.get('owner', request.user.user_id)
@@ -22,8 +28,21 @@ class ProjectAPIView(APIView):
         serializer = ProjectSerializer(data=request_data)
         if serializer.is_valid():
             serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            return Response(
+                data={
+                    "message": "Project created",
+                    "data": serializer.data,
+                },
+                status=status.HTTP_201_CREATED,
+            )
+
+        return Response(
+            data={
+                "exception": f"{serializer.errors}",
+                "message": "Something went wrong",
+            },
+            status=status.HTTP_400_BAD_REQUEST,
+        )
 
 class ProjectDetailAPIView(APIView):
     permission_classes = [IsAuthenticated]
@@ -31,15 +50,33 @@ class ProjectDetailAPIView(APIView):
     def get(self, request, project_id):
         project = get_object_or_404(Projects, project_id=project_id)
         serializer = ProjectSerializer(project)
-        return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(
+            data={
+                "message": "Project/s Found",
+                "data": serializer.data,
+            },
+            status=status.HTTP_200_OK,
+        )
 
     def patch(self, request, project_id):
         project = get_object_or_404(Projects, project_id=project_id)
         serializer = ProjectSerializer(project, data=request.data, partial=True)
         if serializer.is_valid():
             serializer.save()
-            return Response(serializer.data, status=status.HTTP_200_OK)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            return Response(
+                data={
+                    "message": "Project Updated",
+                    "data": serializer.data,
+                },
+                status=status.HTTP_200_OK,
+            )
+        return Response(
+            data={
+                "exception": f"{serializer.errors}",
+                "message": "Something went wrong",
+            },
+            status=status.HTTP_400_BAD_REQUEST,
+        )
 
     def delete(self, request, project_id):
         project = get_object_or_404(Projects, project_id=project_id)

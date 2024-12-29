@@ -1,15 +1,22 @@
+from rest_framework import status
+from rest_framework.authtoken.models import Token
 from rest_framework.permissions import AllowAny
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework import status
-from rest_framework.authtoken.models import Token
-from django.contrib.auth import authenticate
-from .serializers import LoginSerializer
-from .models import Users
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
-from .serializers import CustomTokenObtainPairSerializer, CustomTokenRefreshSerializer, UserRegistrationSerializer, UserDetailSerializer
 from rest_framework.permissions import IsAuthenticated
+
+from django.contrib.auth import authenticate
 from django.shortcuts import get_object_or_404
+
+from .models import Users
+from .serializers import (
+    CustomTokenObtainPairSerializer,
+    CustomTokenRefreshSerializer,
+    UserRegistrationSerializer,
+    UserDetailSerializer
+)
+
 
 # Create your views here.
 class UserRegistrationAPIView(APIView):
@@ -32,33 +39,12 @@ class UserRegistrationAPIView(APIView):
                 },
                 status=status.HTTP_201_CREATED
             )
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    
-
-class LoginAPIView(APIView):
-    permission_classes = [AllowAny]
-
-    def post(self, request):
-        email = request.data.get("email")
-        password = request.data.get("password")
-
-        # Authenticate the user
-        user = authenticate(email=email, password=password)
-        if user:
-            # Create or retrieve the token
-            token, created = Token.objects.get_or_create(user=user)
-            return Response(
-                {
-                    "token": token.key,
-                    "email": user.email,
-                    "username": user.username,
-                    "message": "Login successful",
-                },
-                status=status.HTTP_200_OK,
-            )
         return Response(
-            {"exception": "Invalid credentials", "message": "Login failed"},
-            status=status.HTTP_401_UNAUTHORIZED,
+            data={
+                "exception": f"{serializer.errors}",
+                "message": "Something went wrong",
+            },
+            status=status.HTTP_400_BAD_REQUEST,
         )
 
 
@@ -68,15 +54,34 @@ class UserDetailAPIView(APIView):
     def get(self, request, user_id):
         user = get_object_or_404(Users, user_id=user_id)
         serializer = UserDetailSerializer(user)
-        return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(
+            data={
+                "message": "User Found",
+                "data":serializer.data,
+            },
+            status=status.HTTP_200_OK,
+        )
 
     def patch(self, request, user_id):
         user = get_object_or_404(Users, user_id=user_id)
         serializer = UserRegistrationSerializer(user, data=request.data, partial=True)
         if serializer.is_valid():
             serializer.save()
-            return Response(serializer.data, status=status.HTTP_200_OK)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            return Response(
+                data={
+                    "message": "User Updated",
+                    "data": serializer.data,
+                },
+                status=status.HTTP_200_OK,
+            )
+
+        return Response(
+            data={
+                "exception": f"{serializer.errors}",
+                "message": "Something went wrong",
+            },
+            status=status.HTTP_400_BAD_REQUEST,
+        )
 
     def delete(self, request, user_id):
         user = get_object_or_404(Users, user_id=user_id)
