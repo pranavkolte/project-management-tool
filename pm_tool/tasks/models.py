@@ -22,7 +22,7 @@ class Tasks(models.Model):
     
     task_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     title = models.CharField(max_length=255, null=False)
-    description = models.TimeField(null=False)
+    description = models.TextField(null=False)
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, null=False)
     priority = models.CharField(max_length=20, choices=PRIORITY_CHOICES, null=False)
     assigned_to = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True)
