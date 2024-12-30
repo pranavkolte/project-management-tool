@@ -1,0 +1,1412 @@
+{
+	"info": {
+		"_postman_id": "185e1751-e682-4332-849d-245c48b8f63b",
+		"name": "pm-tool-django",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "36565132"
+	},
+	"item": [
+		{
+			"name": "api",
+			"item": [
+				{
+					"name": "users",
+					"item": [
+						{
+							"name": "/register/",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"testuser3@example.com\",\r\n    \"username\": \"testuser3\",\r\n    \"first_name\": \"Test3\",\r\n    \"last_name\": \"User3\",\r\n    \"password\": \"securepassword123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/api/users/register/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"users",
+										"register",
+										""
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "register-user",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"email\": \"testuser3@example.com\",\r\n    \"username\": \"testuser3\",\r\n    \"first_name\": \"Test3\",\r\n    \"last_name\": \"User3\",\r\n    \"password\": \"securepassword123\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}/api/users/register/",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"api",
+												"users",
+												"register",
+												""
+											]
+										}
+									},
+									"_postman_previewlanguage": null,
+									"header": null,
+									"cookie": [],
+									"body": null
+								}
+							]
+						},
+						{
+							"name": "/login/",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"testuser3@example.com\",\r\n    \"password\": \"securepassword123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/api/users/login/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"users",
+										"login",
+										""
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "login-user",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"email\": \"testuser3@example.com\",\r\n    \"password\": \"securepassword123\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}/api/users/login/",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"api",
+												"users",
+												"login",
+												""
+											]
+										}
+									},
+									"_postman_previewlanguage": null,
+									"header": null,
+									"cookie": [],
+									"body": null
+								}
+							]
+						},
+						{
+							"name": "/refresh/",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"refresh\": \"{{refesh_token}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/api/users/refresh/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"users",
+										"refresh",
+										""
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "refresh-token",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"refresh\": \"{{refesh_token}}\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}/api/users/refresh/",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"api",
+												"users",
+												"refresh",
+												""
+											]
+										}
+									},
+									"_postman_previewlanguage": null,
+									"header": null,
+									"cookie": [],
+									"body": null
+								}
+							]
+						},
+						{
+							"name": "/<user_id>/",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/api/users/{{user_id}}/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"users",
+										"{{user_id}}",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/<user_id>/",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1NTExNTI0LCJpYXQiOjE3MzU1MDc5MjQsImp0aSI6ImQ4YjI1NjM2MDVhYTQ4NmE5OTk4ZmZjNWU4NDMwNmQwIiwidXNlcl9pZCI6ImM5NDNmOWM0LWRiZDktNGExOC05NWJmLTU3Y2RmMDE0NTM4ZiIsImVtYWlsIjoidGVzdHVzZXIyQGV4YW1wbGUuY29tIn0.LVjiOSsJGBEY3DkwDbgGwMtqF8VHbh_Qt3oFO8FFpeA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"testuser02@example.com\",\r\n    \"username\": \"testuser02\",\r\n    \"first_name\": \"TEST02\",\r\n    \"last_name\": \"User2\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/users/{{user_id}}/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"users",
+										"{{user_id}}",
+										""
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "update-name",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"first_name\": \"TEST02\",\r\n    \"last_name\": \"User2\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}/users/{{user_id}}/",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"users",
+												"{{user_id}}",
+												""
+											]
+										}
+									},
+									"_postman_previewlanguage": null,
+									"header": null,
+									"cookie": [],
+									"body": null
+								},
+								{
+									"name": "update-email",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"email\": \"testuser02@example.com\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}/users/{{user_id}}/",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"users",
+												"{{user_id}}",
+												""
+											]
+										}
+									},
+									"_postman_previewlanguage": null,
+									"header": null,
+									"cookie": [],
+									"body": null
+								},
+								{
+									"name": "update-username",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"email\": \"testuser02@example.com\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}/users/{{user_id}}/",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"users",
+												"{{user_id}}",
+												""
+											]
+										}
+									},
+									"_postman_previewlanguage": null,
+									"header": null,
+									"cookie": [],
+									"body": null
+								},
+								{
+									"name": "update-all",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"email\": \"testuser02@example.com\",\r\n    \"username\": \"testuser02\",\r\n    \"first_name\": \"TEST02\",\r\n    \"last_name\": \"User2\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}/users/{{user_id}}/",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"users",
+												"{{user_id}}",
+												""
+											]
+										}
+									},
+									"_postman_previewlanguage": null,
+									"header": null,
+									"cookie": [],
+									"body": null
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "projects",
+					"item": [
+						{
+							"name": "/",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer <your_access_token>"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"New Project\",\n    \"description\": \"Description of the new project\",\n    \"owner\": \"96c269bc-5d0b-490d-bde8-b779985514b2\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/api/projects/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"projects",
+										""
+									]
+								},
+								"description": "Generated from cURL: curl -X POST http://127.0.0.1:8000/api/projects/ \\\n     -H \"Authorization: Bearer <your_access_token>\" \\\n     -H \"Content-Type: application/json\" \\\n     -d '{\n           \"name\": \"New Project\",\n           \"description\": \"Description of the new project\"\n         }'"
+							},
+							"response": [
+								{
+									"name": "create-without-passing-owner",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer <your_access_token>"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"name\": \"New Project\",\n    \"description\": \"Description of the new project\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}/api/projects/",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"api",
+												"projects",
+												""
+											]
+										}
+									},
+									"_postman_previewlanguage": null,
+									"header": null,
+									"cookie": [],
+									"body": null
+								},
+								{
+									"name": "create-with-owner",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer <your_access_token>"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"name\": \"New Project\",\n    \"description\": \"Description of the new project\",\n    \"owner\": \"96c269bc-5d0b-490d-bde8-b779985514b2\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}/api/projects/",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"api",
+												"projects",
+												""
+											]
+										}
+									},
+									"_postman_previewlanguage": null,
+									"header": null,
+									"cookie": [],
+									"body": null
+								}
+							]
+						},
+						{
+							"name": "/",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer <your_access_token>"
+									}
+								],
+								"url": {
+									"raw": "{{host}}/api/projects/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"projects",
+										""
+									]
+								},
+								"description": "Generated from cURL: curl -X GET http://127.0.0.1:8000/api/projects/ \\\n     -H \"Authorization: Bearer <your_access_token>\""
+							},
+							"response": []
+						},
+						{
+							"name": "/<project_id>/",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/api/projects/{{project_id}}/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"projects",
+										"{{project_id}}",
+										""
+									]
+								},
+								"description": "Generated from cURL: curl -X GET http://127.0.0.1:8000/api/projects/<project_id>/ \\\n     -H \"Authorization: Bearer <your_access_token>\""
+							},
+							"response": []
+						},
+						{
+							"name": "/<project_id>/",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Updated Project Name\"\n    // \"description\": \"Updated description\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/api/projects/{{project_id}}/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"projects",
+										"{{project_id}}",
+										""
+									]
+								},
+								"description": "Generated from cURL: curl -X PATCH http://127.0.0.1:8000/api/projects/<project_id>/ \\\n     -H \"Authorization: Bearer <your_access_token>\" \\\n     -H \"Content-Type: application/json\" \\\n     -d '{\n           \"name\": \"Updated Project Name\",\n           \"description\": \"Updated description\"\n         }'"
+							},
+							"response": [
+								{
+									"name": "update-description",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"description\": \"Updated description\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}/api/projects/{{project_id}}/",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"api",
+												"projects",
+												"{{project_id}}",
+												""
+											]
+										}
+									},
+									"_postman_previewlanguage": null,
+									"header": null,
+									"cookie": [],
+									"body": null
+								},
+								{
+									"name": "update-name",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"name\": \"Updated Project Name\"\n\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}/api/projects/{{project_id}}/",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"api",
+												"projects",
+												"{{project_id}}",
+												""
+											]
+										}
+									},
+									"_postman_previewlanguage": null,
+									"header": null,
+									"cookie": [],
+									"body": null
+								}
+							]
+						},
+						{
+							"name": "/<project_id>/",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/api/projects/{{project_id}}/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"projects",
+										"{{project_id}}",
+										""
+									]
+								},
+								"description": "Generated from cURL: curl -X DELETE http://127.0.0.1:8000/api/projects/<project_id>/ \\\n     -H \"Authorization: Bearer <your_access_token>\""
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "tasks",
+					"item": [
+						{
+							"name": "/<project_id>/tasks/",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\": \"New Task\",\n    \"description\": \"Task description\",\n    \"status\": \"To Do\",\n    \"priority\": \"Medium\",\n    \"assigned_to\": \"96c269bc-5d0b-490d-bde8-b779985514b2\",\n    \"due_date\": \"2024-12-31T23:59:59Z\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/api/projects/{{project_id}}/tasks/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"projects",
+										"{{project_id}}",
+										"tasks",
+										""
+									]
+								},
+								"description": "Generated from cURL: curl -X POST http://127.0.0.1:8000/api/projects/<project_id>/tasks/ \\\n     -H \"Authorization: Bearer <your_access_token>\" \\\n     -H \"Content-Type: application/json\" \\\n     -d '{\n           \"title\": \"New Task\",\n           \"description\": \"Task description\",\n           \"status\": \"To Do\",\n           \"priority\": \"Medium\",\n           \"assigned_to\": \"<user_id>\",\n           \"due_date\": \"2024-12-31T23:59:59Z\"\n         }'"
+							},
+							"response": [
+								{
+									"name": "new-task",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n           \"title\": \"New Task\",\n           \"description\": \"Task description\",\n           \"status\": \"To Do\",\n           \"priority\": \"Medium\",\n           \"assigned_to\": \"96c269bc-5d0b-490d-bde8-b779985514b2\",\n           \"due_date\": \"2024-12-31T23:59:59Z\"\n         }",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}/api/projects/{{project_id}}/tasks/",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"api",
+												"projects",
+												"{{project_id}}",
+												"tasks",
+												""
+											]
+										}
+									},
+									"_postman_previewlanguage": null,
+									"header": null,
+									"cookie": [],
+									"body": null
+								}
+							]
+						},
+						{
+							"name": "/<project_id>/tasks/",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/api/projects/{{project_id}}/tasks/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"projects",
+										"{{project_id}}",
+										"tasks",
+										""
+									]
+								},
+								"description": "Generated from cURL: curl -X GET http://127.0.0.1:8000/api/projects/<project_id>/tasks/ \\\n     -H \"Authorization: Bearer <your_access_token>\""
+							},
+							"response": []
+						},
+						{
+							"name": "/<task_id>/",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/api/tasks/{{task_id}}/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"tasks",
+										"{{task_id}}",
+										""
+									]
+								},
+								"description": "Generated from cURL: curl -X GET http://127.0.0.1:8000/api/tasks/<task_id>/ \\\n     -H \"Authorization: Bearer <your_access_token>\""
+							},
+							"response": []
+						},
+						{
+							"name": "/<task_id>/",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\": \"Updated Task Title\",\n    \"status\": \"In Progress\",\n    \"priority\": \"Low\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/api/tasks/{{task_id}}/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"tasks",
+										"{{task_id}}",
+										""
+									]
+								},
+								"description": "Generated from cURL: curl -X PATCH http://127.0.0.1:8000/api/tasks/<task_id>/ \\\n     -H \"Authorization: Bearer <your_access_token>\" \\\n     -H \"Content-Type: application/json\" \\\n     -d '{\n           \"title\": \"Updated Task Title\",\n           \"status\": \"In Progress\"\n         }'"
+							},
+							"response": [
+								{
+									"name": "update-priority",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"priority\": \"High\" // High, Medium, Low\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}/api/tasks/{{task_id}}/",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"api",
+												"tasks",
+												"{{task_id}}",
+												""
+											]
+										}
+									},
+									"_postman_previewlanguage": null,
+									"header": null,
+									"cookie": [],
+									"body": null
+								},
+								{
+									"name": "update-status",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"status\": \"In Progress\" // 'To Do', 'Done', 'In Progress'\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}/api/tasks/{{task_id}}/",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"api",
+												"tasks",
+												"{{task_id}}",
+												""
+											]
+										}
+									},
+									"_postman_previewlanguage": null,
+									"header": null,
+									"cookie": [],
+									"body": null
+								},
+								{
+									"name": "update-title",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"title\": \"New Task Title\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}/api/tasks/{{task_id}}/",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"api",
+												"tasks",
+												"{{task_id}}",
+												""
+											]
+										}
+									},
+									"_postman_previewlanguage": null,
+									"header": null,
+									"cookie": [],
+									"body": null
+								}
+							]
+						},
+						{
+							"name": "/<task_id>/",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/api/tasks/{{task_id}}/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"tasks",
+										"{{task_id}}",
+										""
+									]
+								},
+								"description": "Generated from cURL: curl -X DELETE http://127.0.0.1:8000/api/tasks/<task_id>/ \\\n     -H \"Authorization: Bearer <your_access_token>\""
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "comments",
+					"item": [
+						{
+							"name": "/<task_id>/comments/",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"content\": \"This is a new commenthsvchs.\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/api/tasks/{{task_id}}/comments/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"tasks",
+										"{{task_id}}",
+										"comments",
+										""
+									]
+								},
+								"description": "Generated from cURL: curl -X POST http://127.0.0.1:8000/api/tasks/<task_id>/comments/ \\\n     -H \"Authorization: Bearer <your_access_token>\" \\\n     -H \"Content-Type: application/json\" \\\n     -d '{\n           \"content\": \"This is a new comment.\"\n         }'"
+							},
+							"response": [
+								{
+									"name": "add-new-comment",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"content\": \"This is a new commenthsvchs.\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}/api/tasks/{{task_id}}/comments/",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"api",
+												"tasks",
+												"{{task_id}}",
+												"comments",
+												""
+											]
+										}
+									},
+									"_postman_previewlanguage": null,
+									"header": null,
+									"cookie": [],
+									"body": null
+								}
+							]
+						},
+						{
+							"name": "/<task_id>/comments/",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/api/tasks/{{task_id}}/comments/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"tasks",
+										"{{task_id}}",
+										"comments",
+										""
+									]
+								},
+								"description": "Generated from cURL: curl -X GET http://127.0.0.1:8000/api/tasks/<task_id>/comments/ \\\n     -H \"Authorization: Bearer <your_access_token>\""
+							},
+							"response": []
+						},
+						{
+							"name": "/<comment_id>/",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/api/comments/{{comment_id}}/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"comments",
+										"{{comment_id}}",
+										""
+									]
+								},
+								"description": "Generated from cURL: curl -X GET http://127.0.0.1:8000/api/comments/<comment_id>/ \\\n     -H \"Authorization: Bearer <your_access_token>\""
+							},
+							"response": []
+						},
+						{
+							"name": "/<comment_id>/",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"content\": \"Updated comment content.\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/api/comments/{{comment_id}}/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"comments",
+										"{{comment_id}}",
+										""
+									]
+								},
+								"description": "Generated from cURL: curl -X PATCH http://127.0.0.1:8000/api/comments/<comment_id>/ \\\n     -H \"Authorization: Bearer <your_access_token>\" \\\n     -H \"Content-Type: application/json\" \\\n     -d '{\n           \"content\": \"Updated comment content.\"\n         }'"
+							},
+							"response": [
+								{
+									"name": "update-commnet",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"content\": \"Updated comment content.\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}/api/comments/{{comment_id}}/",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"api",
+												"comments",
+												"{{comment_id}}",
+												""
+											]
+										}
+									},
+									"_postman_previewlanguage": null,
+									"header": null,
+									"cookie": [],
+									"body": null
+								}
+							]
+						},
+						{
+							"name": "/<comment_id>/",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/api/comments/{{comment_id}}/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"comments",
+										"{{comment_id}}",
+										""
+									]
+								},
+								"description": "Generated from cURL: curl -X DELETE http://127.0.0.1:8000/api/comments/<comment_id>/ \\\n     -H \"Authorization: Bearer <your_access_token>\""
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
